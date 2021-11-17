@@ -1,0 +1,104 @@
+<! --- Navication bar --->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="assets/images/logo.png" width="50" height="50"> 
+    <a class="navbar-brand" href="/">  Animal Coders</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/home"><i class="fas fa-lg fa-laptop-house"></i> Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about"><i class="fas fa-lg fa-laptop-house"></i> About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/surveys"><i class="fas fa-lg fa-laptop-house"></i> Surveys</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<! --- Table content --->
+<main class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <br>
+            <!-- add button-->
+            <div class="d-flex">
+                <button (click) = "clickAddSurvey()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add Survey</button>
+            </div>
+            
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr >
+            <th >Survey ID</th>
+            <th >Survey Name</th>
+            <th >Survey Description</th>
+            <th >Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- loop surveyData into the rows with getSurveyDetails/-->
+        <tr *ngFor="let row of surveyData">
+            <td class="text-center col-1">{{row.id}}</td>
+            <td class="text-center col-1">{{row.surveyName}}</td>
+            <td class="text-center col-2">{{row.surveyDescription}}</td>
+            <td class="text-center col-1">
+                <button (click)="onEdit(row)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" >Edit</button>
+                <button (click)= "deleteSurveyDetails(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</main>
+
+  <!-- Modal Content-->
+  <div class="container mt-5">
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Survey Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- to bind values with ngOnInit function-->
+                    <form [formGroup]="formValue">
+                        <div class="mb-3">
+                            <label class="form-label required">Survey Name</label>
+                            <input type="text" formControlName="surveyName" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label required">Survey Description</label>
+                            <input type="text" formControlName="surveyDescription" class="form-control">
+                        </div>
+                    </form>
+                </div>
+                 <!-- Add, Edit buttons of modal-->
+                <div class="modal-footer">
+                     <!-- Calls post method on click and removes update button-->
+                    <button type="button" *ngIf="showAdd" (click)="postSurveyDetails()" class="btn btn-primary">Add</button>
+                     <!-- calls updtate method on click and removes add button-->
+                    <button type="button" *ngIf="showUpdate" (click)="updateSurveyDetails()" class="btn btn-primary">Edit </button>
+                     <!--cancel button-->
+                    <button type="button" id="cancel" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Content-->
+<footer>
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+      <h6 class="display-7 navbar-text">&copy; Copyright 2021. All Rights Reserved.</h6>
+    </nav>
+  </footer>

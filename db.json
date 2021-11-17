@@ -1,0 +1,33 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "surveyName": "Animal Survey",
+      "surveyDescription": "Canadian's Favorite Animals"
+    },
+    {
+      "id": 3,
+      "surveyName": "Country Survey",
+      "surveyDescription": "American's Favorite Country"
+    },
+    {
+      "id": 4,
+      "surveyName": "TV Show Surveys",
+      "surveyDescription": "You're least favorite TV series"
+    },
+    {
+      "id": 5,
+      "surveyName": "Favorite Company",
+      "surveyDescription": "Toronto Citizen's favorite companies"
+    },
+    {
+      "id": 6,
+      "surveyName": "Alberta Weather",
+      "surveyDescription": "Do people in Alberta like the cold weather?"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
